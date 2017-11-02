@@ -34,7 +34,13 @@ public class SysAdminController {
 
     @FXML
     void createAccountButton(ActionEvent event) {
-
+        String userType = userTypeTextField.getText();
+        String pass = passwordTextField.getText();
+        String username = usernameTextField.getText();
+        String email = emailTextField.getText();
+        String phoneNum = phoneNumberTextField.getText();
+        
+        //SysAdmin.addUser(userType, phoneNum, email, username, pass);
     }
 
     @FXML
