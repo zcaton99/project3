@@ -78,9 +78,25 @@ public class SysAdmin extends Employee{
                 }
             }
         }
-                
+         
     }
     
-    
+     public void resetPassword(String name, String newPass) throws FileNotFoundException{
+            
+        for(int i=0; i< users.size(); i++){
+            if(users.get(i).getUsername().compareTo(name) == 0){
+                //change pass to new pass
+                users.get(i).setPassword(newPass);
+            }
+        }
+       File f = new File(fileName);
+       try (PrintWriter p = new PrintWriter(f)) {
+            for(Employee usr: users){
+                p.println(usr.toString());
+            }
+        }
+            
+            
+    }
     
 }

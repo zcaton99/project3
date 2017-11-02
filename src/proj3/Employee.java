@@ -22,7 +22,12 @@ public class Employee {
     public String getUsername() {
         return username;
     }
-
+    
+    
+    public void setPassword(String pass){
+        this.password = pass;
+    }
+    
     public String getPassword(boolean a) {
         if (a)
             return password;

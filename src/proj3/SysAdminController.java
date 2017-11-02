@@ -52,14 +52,14 @@ public class SysAdminController {
         String usernameDelete = deleteUserTextField.getText();
         SysAdmin delAdmin = new SysAdmin();
         delAdmin.deleteUser(usernameDelete);
-        
-        
     }
 
     @FXML
-    void resetPasswordButton(ActionEvent event) {
+    void resetPasswordButton(ActionEvent event) throws FileNotFoundException{
         String usernameReset = resetUserTextField.getText();
         String passwordReset = resetPasswordTextField.getText();
+        SysAdmin resAdmin = new SysAdmin();
+        resAdmin.resetPassword(usernameReset, passwordReset);
     }
 
 }
