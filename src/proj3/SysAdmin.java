@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 /**
  *
  * @author zachcaton
@@ -19,7 +20,7 @@ public class SysAdmin extends Employee{
     ArrayList<Employee> users = new ArrayList<>();
     String fileName = "users.txt";
     
-    public void addUsers(String userType, String phoneNumber, String email, String userName, String password) throws FileNotFoundException{
+    public void addUser(String userType, String phoneNumber, String email, String userName, String password) throws FileNotFoundException{
         
         String [] user = new String[5];
         user[0] = userType;
@@ -40,6 +41,45 @@ public class SysAdmin extends Employee{
         
     }
 
+    public void deleteUser(String username) throws FileNotFoundException{
+        //read from user.txt
+        //then compare names and delete the correct one
+        if(users.isEmpty() == true){
+            File vf = new File(fileName);
+            Scanner inVF = new Scanner(vf);
+
+            while(inVF.hasNext()){
+                String line = inVF.nextLine();
+                String [] pA = line.split(",");
+                Employee ba = new Employee(pA[0], pA[1], pA[2], pA[3], pA[4]);
+                users.add(ba);
+            }
+            for(int i=0; i< users.size(); i++){
+                if(users.get(i).getUsername().compareTo(username) == 0){
+                    users.remove(i);
+                }
+            }
+            File f = new File(fileName);
+            try (PrintWriter p = new PrintWriter(f)) {
+                for(Employee usr: users){
+                    p.println(usr.toString());
+                }
+            }
+        }else{
+            for(int i=0; i< users.size(); i++){
+                if(users.get(i).getUsername().compareTo(username) == 0){
+                    users.remove(i);
+                }
+            }
+            File f = new File(fileName);
+            try (PrintWriter p = new PrintWriter(f)) {
+                for(Employee usr: users){
+                    p.println(usr.toString());
+                }
+            }
+        }
+                
+    }
     
     
     
